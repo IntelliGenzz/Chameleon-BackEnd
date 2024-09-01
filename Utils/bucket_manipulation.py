@@ -1,8 +1,8 @@
 import aioboto3
 from pdf2image import convert_from_path
-import fitz
 import os
 from tempfile import NamedTemporaryFile
+import PyPDF2
 
 def pdf_to_image(pdf_path, output_path):
     if not os.path.exists(output_path):
@@ -14,11 +14,12 @@ def pdf_to_image(pdf_path, output_path):
 
 def extract_text_from_pdf(pdf_path):
     try:
-        doc = fitz.open(pdf_path)
-        text = ""
-        for page in doc:
-            text += page.get_text()
-        return text.strip()
+        with open(pdf_path, 'rb') as file:
+            reader = PyPDF2.PdfFileReader(file)
+            text = ""
+            for page in range(reader.numPages):
+                text += reader.getPage(page).extractText()
+            return text.strip()
     except Exception as e:
         print(f"Erro ao extrair texto do PDF: {e}")
         return None
