@@ -1,6 +1,5 @@
-import aioboto3
 from pdf2image import convert_from_path
-import fitz  # PyMuPDF
+import fitz
 import os
 from tempfile import NamedTemporaryFile
 

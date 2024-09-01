@@ -1,4 +1,4 @@
 fastapi[all]
 boto3[all]
 uvicorn[all]
-dotenv[all]
+python-dotenv[all]
