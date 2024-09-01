@@ -1,6 +1,6 @@
 import speech_recognition as sr
 
-def speech_to_text(audio_file):
+async def speech_to_text(audio_file):
     recognizer = sr.Recognizer()
     
     try:

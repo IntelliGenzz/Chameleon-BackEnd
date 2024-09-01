@@ -38,8 +38,9 @@ async def generate_response(userInput: str, is_audio_file: bool = False):
         userInput = str(userInput)
         print(f"User input: {userInput}")
         if is_audio_file:
-            userInput = speech_to_text(userInput)
+            userInput = await speech_to_text(userInput)
         
+        print("")
         result = await ask_question(s3_client, bedrock_client, userInput)
         return {"response": result}
     
@@ -53,7 +54,7 @@ async def send_train_files(file: bytes, file_type: str):
             await upload_txt_to_s3(s3_client, file)
             
         elif file_type == "audio":
-            file_text = speech_to_text(file)
+            file_text = await speech_to_text(file)
             await upload_txt_to_s3(s3_client, file_text)
             
         elif file_type == "image":
