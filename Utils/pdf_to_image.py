@@ -1,7 +1,6 @@
 from pdf2image import convert_from_path
 import fitz
 import os
-from tempfile import NamedTemporaryFile
 
 def pdf_to_image(pdf_path, output_path):
     if not os.path.exists(output_path):

@@ -1,4 +1,8 @@
 fastapi[all]
 boto3[all]
+aioboto3[all]
 uvicorn[all]
 python-dotenv[all]
+pdf2image[all]
+fitz[all]
+speech_recognition[all]
